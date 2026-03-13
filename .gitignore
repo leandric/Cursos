@@ -3,6 +3,12 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+# Bases
+.csv
+.parquet
+.pickle
+
+
 # C extensions
 *.so
 .DS_Store
@@ -205,3 +211,5 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+Polars_curso/database/restaurantes.csv
+Polars_curso/database/*.csv

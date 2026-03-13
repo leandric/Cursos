@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
 from fastapi import APIRouter, Depends, HTTPException, Response, Query
 from typing import Annotated
 from api.models import LivroResposta, Livro, LivroPost, LivroPut, LivroPatch, ConfirmaDelete
@@ -96,3 +99,27 @@ async def deletar_livro(livro_id: UUID, session: SessionDep) -> ConfirmaDelete:
             return ConfirmaDelete(mensagem=f'Livro {titulo} deletado.', uuid=livro_id)
     
     raise HTTPException(status_code=404, detail='Livro não encontrado')
+=======
+>>>>>>> rescue-detached
+from typing import Annotated
+from fastapi import APIRouter, Depends
+from sqlmodel import Session, select
+
+from api.databse import get_session
+from api.models import Livro, LivroResposta
+
+router = APIRouter(prefix='/livros', tags='Livros')
+
+SessionDep = Annotated[Session, Depends(get_session)]
+
+
+#get -listar todos os livros
+@router.get(path='/livros', response_model=list[LivroResposta])
+async def listar_livros(session: SessionDep) -> list[LivroResposta]:
+    livros = session.exec(select(Livro)).all()
+<<<<<<< HEAD
+    return [LivroResposta.model_validate(livro) for livro in livros]
+=======
+    return [LivroResposta.model_validate(livro) for livro in livros]
+>>>>>>> 15c1cb9 (_+_=_+)
+>>>>>>> rescue-detached
