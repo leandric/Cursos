@@ -6,5 +6,5 @@ services:
       - "2222:22"
     volumes:
       - ./data-sftp:/home/teste/upload
-    command: teste:123456:1001
+    command: teste:123456:1001:1001
     restart: unless-stopped
